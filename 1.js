@@ -5,4 +5,5 @@ $("#SendComment").click(function(){
 });
 function test(){
 	console.log('1');
+//ด๚ธี
 }
