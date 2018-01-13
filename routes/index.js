@@ -121,5 +121,10 @@ router.get('/store', function(req, res, next) {
     res.render('store', { title: 'store imformation'});
 });
 
+router.get('/upload', function (req, res, next) {
+
+    // use ProjectAdd.ejs
+    res.render('upload', { title: 'upload imformation' });
+});
 
 module.exports = router;

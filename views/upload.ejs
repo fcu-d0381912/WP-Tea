@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Tea Website</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+    <title>Business Casual - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,13 +20,43 @@
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/css/business-casual.css" rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+	
+	
+     
   </head>
 
   <body>
+      <style>
+          .setComment {
+              border-style: solid;
+              border-width: 5px;
+              border-radius: 10px;
+              width: 200px;
+              overflow: auto;
+              float: left;
+              background-color: hsla(0, 0%, 100%,0.5);
+              position: relative;
+              height: 350px;
+          }
 
+          #SendComment {
+              border-style: solid;
+              border-radius: 10px;
+              width: 190px;
+              position: absolute;
+              bottom: 0px;
+              right: 0px;
+              float: left;
+              background-color: hsla(0, 0%, 100%,0.5);
+          }
+          #commentText {
+              border-style: solid;
+              border-width: 5px;
+              border-radius: 10px;
+              float: left;
+              background-color: hsla(0, 0%, 100%,0.5);
+          }
+      </style>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-3" id="mainNav">
       <div class="container">
@@ -36,7 +67,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/"><i class="fa fa-home"></i>首頁
+              <a class="nav-link text-uppercase text-expanded" href="/">首頁
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -60,46 +91,32 @@
       </div>
     </nav>
 
-    <button onclick="topFunction()" id="backToTopButton" title="回頂部"><i class="fa fa-chevron-up" style="font-size:30px;"></i></button>
+    <h1 class="site-heading text-center text-white">討論區</h1>
 
-    <h1 class="site-heading text-center text-white d-none d-lg-block">
-      <span class="site-heading-upper text-primary mb-3">好茶 好農 好茶味</span>
-      <span class="site-heading-lower">茶之口未</span>
-    </h1>
-
-    <section class="page-section clearfix">
+    <section class="page-section about-heading">
       <div class="container">
-        <div class="intro">
-          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/stylesheets/img/intro.jpg" alt="">
-          <!--
-          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Fresh Coffee</span>
-              <span class="section-heading-lower">Worth Drinking</span>
-            </h2>
-            <p class="mb-3">Every cup of our quality artisan coffee starts with locally sourced, hand picked ingredients. Once you try it, our coffee will be a blissful addition to your everyday morning routine - we guarantee it!
-            </p>
-            <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="#">Visit Us Today!</a>
-            </div>
-          </div>-->
-        
-        </div>
-      </div>
-    </section>
+        <!--<img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">-->
+        <div class="about-heading-content" >
+          <div class="row">
+              
+         
+           
 
-    <section class="page-section cta">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-9 mx-auto">
-            <div class="cta-inner text-center rounded">
-              <h2 class="section-heading mb-4">
-                <span class="section-heading-upper">12/26更新</span>
-                <span class="section-heading-lower">最新消息</span>
-              </h2>
-              <p class="mb-0">Beta Beta Beta</p>
-            </div>
-          </div>
+            <div class="bg-faded rounded p-5" id="commentText">
+                
+
+                <div style="width:400px;height:250px" id = "comment_1">
+                    <h2 class="section-heading mb-4">
+                      <input type="file" name="'上傳" onchange = "previewFile()">
+					  <img src = "" height="200" alt="Image preview...">
+                    </h2>
+					
+                    <p></p>
+                    <p class="mb-0"></p>
+                </div>
+            </div>   
+			
+          
         </div>
       </div>
     </section>
@@ -109,12 +126,28 @@
         <p class="m-0 small">Copyright &copy; Team13 隨意當 2017</p>
       </div>
     </footer>
-
+	
+	
     <!-- Bootstrap core JavaScript -->
     <script src="/stylesheets/vendor/jquery/jquery.min.js"></script>
-    <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/stylesheets/js/tea-website.js"></script>
+	<script src="1.js"></script>
 
+    <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script>
+	function previewFile(){
+		var preview = document.querySelector('img');
+		var file = $("input").prop("files")[0];
+		var reader = new FileReader();
+
+		reader.addEventListener("load",function(){
+			preview.src = reader.result;		
+		},false);
+
+		if(file){
+			reader.readAsDataURL(file);
+		}
+	}
+	</script>
   </body>
 
 </html>
