@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
     <title>Business Casual - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
@@ -19,11 +20,43 @@
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/css/business-casual.css" rel="stylesheet">
-
+	
+	
+     
   </head>
 
   <body>
+      <style>
+          .setComment {
+              border-style: solid;
+              border-width: 5px;
+              border-radius: 10px;
+              width: 200px;
+              overflow: auto;
+              float: left;
+              background-color: hsla(0, 0%, 100%,0.5);
+              position: relative;
+              height: 350px;
+          }
 
+          #SendComment {
+              border-style: solid;
+              border-radius: 10px;
+              width: 190px;
+              position: absolute;
+              bottom: 0px;
+              right: 0px;
+              float: left;
+              background-color: hsla(0, 0%, 100%,0.5);
+          }
+          #commentText {
+              border-style: solid;
+              border-width: 5px;
+              border-radius: 10px;
+              float: left;
+              background-color: hsla(0, 0%, 100%,0.5);
+          }
+      </style>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-3" id="mainNav">
       <div class="container">
@@ -58,24 +91,32 @@
       </div>
     </nav>
 
-    <h1 class="site-heading text-center text-white">關於我們</h1>
+    <h1 class="site-heading text-center text-white">討論區</h1>
 
     <section class="page-section about-heading">
       <div class="container">
-        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="/stylesheets/img/about.jpg" alt="">
-        <div class="about-heading-content">
+        <!--<img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">-->
+        <div class="about-heading-content" >
           <div class="row">
-            <div class="col-xl-9 col-lg-10 mx-auto">
-              <div class="bg-faded rounded p-5">
-                <h2 class="section-heading mb-4">
-                  <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
-                  <span class="section-heading-lower">About Our Cafe</span>
-                </h2>
-                <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.</p>
-                <p class="mb-0">We guarantee that you will fall in <em>lust</em> with our decadent blends the moment you walk inside until you finish your last sip. Join us for your daily routine, an outing with friends, or simply just to enjoy some alone time.</p>
-              </div>
-            </div>
-          </div>
+              
+         
+           
+
+            <div class="bg-faded rounded p-5" id="commentText">
+                
+
+                <div style="width:400px;height:250px" id = "comment_1">
+                    <h2 class="section-heading mb-4">
+                      <input type="file" name="'上傳" onchange = "previewFile()">
+					  <img src = "" height="200" alt="Image preview...">
+                    </h2>
+					
+                    <p></p>
+                    <p class="mb-0"></p>
+                </div>
+            </div>   
+			
+          
         </div>
       </div>
     </section>
@@ -85,11 +126,28 @@
         <p class="m-0 small">Copyright &copy; Team13 隨意當 2017</p>
       </div>
     </footer>
-
+	
+	
     <!-- Bootstrap core JavaScript -->
     <script src="/stylesheets/vendor/jquery/jquery.min.js"></script>
-    <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="1.js"></script>
 
+    <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script>
+	function previewFile(){
+		var preview = document.querySelector('img');
+		var file = $("input").prop("files")[0];
+		var reader = new FileReader();
+
+		reader.addEventListener("load",function(){
+			preview.src = reader.result;		
+		},false);
+
+		if(file){
+			reader.readAsDataURL(file);
+		}
+	}
+	</script>
   </body>
 
 </html>
