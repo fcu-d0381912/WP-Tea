@@ -9,7 +9,7 @@
     <meta name="author" content="">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
-    <title>Business Casual - Start Bootstrap Theme</title>
+    <title>Tea Website</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,10 +17,13 @@
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <link herf="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/css/business-casual.css" rel="stylesheet">
-	
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
      
   </head>
@@ -67,7 +70,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/">首頁
+              <a class="nav-link text-uppercase text-expanded" href="/"><i class="fa fa-home"></i>首頁
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -88,28 +91,65 @@
       </div>
     </nav>
 
+    <!--<button onclick="" id="sendButtom" title="留言"><span><i class="material-icons" style="font-size:50px;">chat</i></span></button>-->
+
+    
+    <button class="op-send-button change-button">
+        <div class='button-text'>留言</div>
+        <span><i class="material-icons" style="font-size:50px;">chat</i></span>
+    </button>
+
+    <span class="op-messege-area">
+      <div class="">
+        <div class="row">
+          <div class="text-white" style="margin-left: 20px;"><h3>留言</h3></div>
+          <span>
+              <button class="close-button"><i class="fa fa-remove" style="font-size:30px;"></i></button>
+          </span>
+        </div>
+        
+        <form class="form-area">  
+          <div class="form-group">
+            <textarea type="text" name="Comment" class="form-control" placeholder="輸入文字" rows="10"></textarea>
+          </div>
+        </form>
+        <div class="row">
+          <span>
+            <button class="send-text-button"><i class="fa fa-send" style="font-size:30px;"></i></button>
+          </span>
+          <!--<span>
+            <button class="close-button"><i class="fa fa-remove" style="font-size:30px;"></i></button>
+          </span>-->
+        </div>
+      
+      </div>  
+    </span>
+
+    
+    
+
     <h1 class="site-heading text-center text-white">討論區</h1>
 
-    <section class="page-section about-heading">
+    <section class="page-section about-heading comment-area">
       <div class="container">
         <!--<img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="">-->
         <div class="about-heading-content" >
           <div class="row">
               
-         
-            <div class="col-xl-9 col-lg-10 mx-auto"  >
-              
-            <div class="setComment">
-                <ul>
-                    <li> 紅茶</li>
-                    <li> 綠茶</li>
-                </ul>
-            </div>
-
-            <div class="bg-faded rounded p-5" id="commentText">
-                
-
-                <div style="width:400px;height:250px" id = "comment_1">
+            
+              <div class="col-lg-2 col-md-6 mb-4"  >
+                <div class="comment-bg h-100"> 
+                    <ul>
+                        <li> 紅茶</li>
+                        <li> 綠茶</li>
+                    </ul>
+                </div>
+              </div>
+            
+            
+            
+              <div class="col-lg-10 col-md-6 mb-4" >
+                <div class="comment-bg h-100">
                     <h2 class="section-heading mb-4">
                         <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
                         <span class="section-heading-lower">關於茶葉</span>
@@ -117,19 +157,32 @@
                     <p></p>
                     <p class="mb-0"></p>
                 </div>
-            </div>   
-			
-            </div>
-              <div class="setComment">
-                  <h1 style="text-align:center">輸入</h1>
-                  <textarea type="text" name="Comment" id="Comment" style="width:190px;height:235px; background-color: hsla(0, 0%, 100%,0.5);"></textarea>
-				  <button id="SendComment">送出</button>
+
               </div>
+      
+<!--
+            <div class="col-lg-4 col-md-6 mb-4"  >
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="card-title">
+                      <h1 style="text-align:center">留言</h1>                            
+                  </div>
+                  <div class="card-text">
+                    <textarea type="text" name="Comment" class="h-100 w-100"></textarea>
+                  </div>                            
+                </div>
+                <div class="card-footer">
+                    <button id="SendComment1" class="w-100">送出<i class="fa fa-send"></i></button>
+                  </div>
+              </div>              
+            </div>-->
               
           </div>
         </div>
       </div>
     </section>
+
+    
 
     <footer class="footer text-faded text-center py-5">
       <div class="container">
@@ -143,6 +196,7 @@
 	<script src="1.js"></script>
 
     <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/stylesheets/js/tea-website.js"></script>
 
   </body>
 
