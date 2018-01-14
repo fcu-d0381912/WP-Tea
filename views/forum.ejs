@@ -110,12 +110,12 @@
         
         <form class="form-area">  
           <div class="form-group">
-            <textarea type="text" name="Comment" class="form-control" placeholder="輸入文字" rows="10"></textarea>
+            <textarea type="text" name="Comment" id="message" class="form-control" placeholder="輸入文字" rows="10"></textarea>
           </div>
         </form>
         <div class="row">
           <span>
-            <button class="send-text-button"><i class="fa fa-send" style="font-size:30px;"></i></button>
+            <button class="send-text-button" id="sendMessage"><i class="fa fa-send" style="font-size:30px;"></i></button>
           </span>
           <!--<span>
             <button class="close-button"><i class="fa fa-remove" style="font-size:30px;"></i></button>
@@ -148,8 +148,8 @@
             
             
             
-              <div class="col-lg-10 col-md-6 mb-4" >
-                <div class="comment-bg h-100">
+              <div class="col-lg-10 col-md-6 mb-4">
+                <div class="comment-bg h-100" id="messageBoard">
                     <h2 class="section-heading mb-4">
                         <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
                         <span class="section-heading-lower">關於茶葉</span>
@@ -193,8 +193,8 @@
 	
     <!-- Bootstrap core JavaScript -->
     <script src="/stylesheets/vendor/jquery/jquery.min.js"></script>
-	<script src="1.js"></script>
-
+	<script src="/stylesheets/js/sendMessage.js"></script>
+	
     <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/stylesheets/js/tea-website.js"></script>
 
