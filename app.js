@@ -10,12 +10,12 @@ var users = require('./routes/users');
 var mysql = require('mysql');
 
 //mysql 先註解掉
-/*
+
 var con = mysql.createConnection({
   host: "localhost",
   user: "d0342435",
   password: "c476306c",
-  database: "scrumboard"
+  database: "wptea"
 });
 
 con.connect(function(err) {
@@ -27,7 +27,7 @@ con.connect(function(err) {
 
 });
 
-*/
+
 var app = express();
 
 // view engine setup
@@ -43,12 +43,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // db state 後面加的
-/*
+
 app.use(function(req, res, next) {
     req.con = con;
     next();
 });
-*/
+
 app.use('/', index);
 app.use('/users', users);
 

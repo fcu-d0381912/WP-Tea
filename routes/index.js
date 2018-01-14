@@ -126,5 +126,67 @@ router.get('/upload', function (req, res, next) {
     // use ProjectAdd.ejs
     res.render('upload', { title: 'upload imformation' });
 });
+router.get('/login', function(req, res, next) {
 
+    // use teaAdd.ejs
+    res.render('login', { title: 'login'});
+});
+router.get('/logintest', function(req, res, next) {
+	
+	var db = req.con;	
+    var data = null;
+    var state= req.query.state;
+	var Ssn= req.query.Ssn;
+	var Password= req.query.Password;
+	
+
+    var query=db.query('SELECT * FROM user WHERE Ssn=? AND Password=?',[Ssn,Password], function(err, rows) {
+        if (err) {
+            console.log(err);
+        }	
+        data = rows;
+		console.log(data);
+		if(data.length == 0){
+			res.render('login', { title: 'login falid', data: data});
+		}
+		else{
+			res.render('indexlogintest', { title: 'login success', data: data});
+		}
+    });
+});
+// add page
+
+router.get('/addTea', function(req, res, next) {
+
+    var db = req.con;
+    var data = "";
+
+    db.query('SELECT * FROM tea ', function(err, rows) {
+        if (err) {
+            console.log(err);
+        }
+
+        var data = rows;
+        res.render('addTea', { title: 'Add Tea', data: data });
+    });
+});
+router.post('/addTea', function(req, res, next) {
+	
+	var db = req.con;	
+    var sql = {
+		Tid:req.body.Tid,
+        Tname: req.body.Tname,
+        price: req.body.price,
+        TeaSpecies: req.body.TeaSpecies
+    };
+
+    console.log(sql);
+    var qur = db.query('INSERT INTO tea SET ?', sql, function(err, rows) {
+        if (err) {
+            console.log(err);
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.redirect('/store');
+    });
+});
 module.exports = router;
