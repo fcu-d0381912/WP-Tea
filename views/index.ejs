@@ -36,24 +36,24 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/"><i class="fa fa-home"></i>首頁
+              <a class="nav-link" href="/"><i class="fa fa-home"></i>首頁
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/intro">茶葉介紹</a>
+              <a class="nav-link" href="/intro">茶葉介紹</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/store">銷售專區</a>
+              <a class="nav-link" href="/store">銷售專區</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/forum">討論區</a>
+              <a class="nav-link" href="/forum">討論區</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/about">關於我們</a>
+              <a class="nav-link" href="/about">關於我們</a>
             </li>
-			<li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/upload">上傳</a>
+			      <li class="nav-item px-lg-4">
+              <a class="nav-link" href="/upload">上傳</a>
             </li>
           </ul>
         </div>
@@ -62,29 +62,46 @@
 
     <button onclick="topFunction()" id="backToTopButton" title="回頂部"><i class="fa fa-chevron-up" style="font-size:30px;"></i></button>
 
-    <h1 class="site-heading text-center text-white d-none d-lg-block">
-      <span class="site-heading-upper text-primary mb-3">好茶 好農 好茶味</span>
-      <span class="site-heading-lower">茶之口未</span>
+    <h1 class="ml1 site-heading text-center text-white d-none d-lg-block">
+      <span class="text-wrapper">
+        <span class="line line1"></span>
+        <span class="site-heading-upper letters">茶之口未</span>
+        <span class="line line2"></span>
+      </span>
     </h1>
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <span class="site-heading-lower text-primary mb-3">好茶 好農 好茶味</span>
+    </h1>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
     <section class="page-section clearfix">
       <div class="container">
         <div class="intro">
-          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/stylesheets/img/intro.jpg" alt="">
-          <!--
-          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Fresh Coffee</span>
-              <span class="section-heading-lower">Worth Drinking</span>
-            </h2>
-            <p class="mb-3">Every cup of our quality artisan coffee starts with locally sourced, hand picked ingredients. Once you try it, our coffee will be a blissful addition to your everyday morning routine - we guarantee it!
-            </p>
-            <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="#">Visit Us Today!</a>
-            </div>
-          </div>-->
-        
+
+          <div class="img-slides fade">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/stylesheets/img/intro01.jpg" alt="">
+          </div>
+          <div class="img-slides fade">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/stylesheets/img/intro02.jpg" alt="">
+          </div>
+          <div class="img-slides fade">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/stylesheets/img/intro03.jpg" alt="">
+          </div>
+          <div class="img-slides fade">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/stylesheets/img/intro04.jpg" alt="">
+          </div>
+
+          
+
         </div>
+      </div>
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
       </div>
     </section>
 
@@ -114,6 +131,7 @@
     <script src="/stylesheets/vendor/jquery/jquery.min.js"></script>
     <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/stylesheets/js/tea-website.js"></script>
+    
 
   </body>
 
