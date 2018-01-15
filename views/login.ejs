@@ -86,7 +86,10 @@
 			      <li class="nav-item px-lg-4">
               <a class="nav-link" href="/upload">上傳</a>
             </li>
-			      
+						<% if (locals.Ssn) { %>
+						  <p>您好, <%= Ssn %></p>  
+						  <!--<a href="/logout">登出</a>-->
+						<% } %>				      
           </ul>
         </div>
       </div>

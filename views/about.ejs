@@ -55,14 +55,22 @@
 			      <li class="nav-item px-lg-4">
               <a class="nav-link" href="/upload">上傳</a>
             </li>
-			      
+						<% if (locals.Ssn) { %>
+						  <p>您好, <%= Ssn %></p>  
+						  <!--<a href="/logout">登出</a>-->
+						<% } %>				      
           </ul>
         </div>
       </div>
     </nav>
 
-    <button class="text-white login-button nav-link ">註冊</button>
-    <button class="text-white login-button nav-link " onclick="javascript: location.href='login'">登入</button>
+	<% if (locals.Ssn) { %>
+	<button class="text-white login-button nav-link " onclick="javascript: location.href='loginout'">登出</button>
+	<% } %>	
+	<% if(!locals.Ssn){ %>	
+	    <button class="text-white login-button nav-link ">註冊</button>
+		<button class="text-white login-button nav-link " onclick="javascript: location.href='login'">登入</button>
+	<% } %>
 
     <h1 class="site-heading text-center text-white">關於我們</h1>
 
