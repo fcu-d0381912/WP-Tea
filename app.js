@@ -9,6 +9,9 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var mysql = require('mysql');
 
+var fs = require('fs');
+var multer = require('multer')
+var upload = multer({ dest: 'public/img2/' });
 //mysql 先註解掉
 /*
 var con = mysql.createConnection({
@@ -69,5 +72,22 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+app.post('/upload', upload.single('logo'), function (req, res, next) {
+    var file = req.file;
+    
+    console.log('文件类型：%s', file.mimetype);
+    console.log('原始文件名：%s', file.originalname);
+    console.log('文件大小：%s', file.size);
+    console.log('文件保存路径：%s', file.path);
+    res.send({ ret_code: '0' });
+});
+
+app.get('/form', function (req, res, next) {
+    var form = fs.readFileSync('./form.html', { encoding: 'utf8' });
+    res.send(form);
+});
+
 
 module.exports = app;

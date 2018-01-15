@@ -107,9 +107,12 @@
 
                 <div style="width:400px;height:250px" id = "comment_1">
                     <h2 class="section-heading mb-4">
-                      <input type="file" name="'上傳" onchange = "previewFile()">
+					<form  action="/upload" method="post" enctype="multipart/form-data">
+                      <input type="file" name="logo" onchange = "previewFile()">
 					  <img src = "" height="200" alt="Image preview...">
-                    </h2>
+					  <button type="submit">Submit</button>
+                    </form>
+					</h2>
 					
                     <p></p>
                     <p class="mb-0"></p>

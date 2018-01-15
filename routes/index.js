@@ -127,4 +127,32 @@ router.get('/upload', function (req, res, next) {
     res.render('upload', { title: 'upload imformation' });
 });
 
+router.get('/form', function (req, res, next) {
+
+    // use ProjectAdd.ejs
+    res.render('form', { title: 'upload imformation' });
+});
+
+router.get('/form', function (req, res) {
+    // do something w/ req.body or req.files
+    
+});
+
+
+var formidable = require('formidable');
+
+router.post('/upload', function (req, res) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            return res.redirect(303, '/error');
+        }
+        console.log('received fields: ');
+        console.log(fields);
+        console.log('received files: ');
+        console.log(files);
+        return res.redirect(303, '/form');
+    });
+});
+
 module.exports = router;
