@@ -138,9 +138,16 @@ router.get('/intro', function(req, res, next) {
 });
 
 router.get('/store', function(req, res, next) {
+	var db = req.con;
+    var data = "";
+    db.query('SELECT * FROM tea ', function(err, rows) {
+        if (err) {
+            console.log(err);
+        }
 
-    // use ProjectAdd.ejs
-    res.render('store', { title: 'store imformation'});
+        var data = rows;
+        res.render('store', { title: 'store imformation', data: data });
+    });
 });
 
 
