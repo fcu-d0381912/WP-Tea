@@ -1,10 +1,29 @@
 var express = require('express');
 var router = express.Router();
-
+var path = require('path');
 
 var fs = require('fs');
 var multer = require('multer')
-var upload = multer({ dest: 'public/img2/' });
+
+var storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function(req, file, cb){
+    cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+/*
+var upload = multer({
+  storage: storage
+});
+*/
+// Init Upload
+const upload = multer({
+  storage: storage,
+  limits:{fileSize: 10000000},
+});
+
+
+//var upload = multer({ dest: 'public/img2/' });
 /*
 //test db
 // home page
