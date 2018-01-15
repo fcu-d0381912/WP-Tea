@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var session = require('express-session');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var mysql = require('mysql');
@@ -48,6 +50,11 @@ app.use(function(req, res, next) {
     req.con = con;
     next();
 });
+
+app.use(session({
+  secret: 'recommand 128 bytes random string', // 建议使用 128 个字符的随机字符串
+  cookie: { maxAge: 60 * 1000 }
+}));
 
 app.use('/', index);
 app.use('/users', users);

@@ -116,29 +116,40 @@ router.post('/projectEdit', function(req, res, next) {
 //boostrap
 // home page
 router.get('/', function(req, res, next) {
-
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
         // use index.ejs
-        res.render('index', { title: 'index Information'});
+        res.render('index', { title: 'index Information',Ssn});
 });
 router.get('/about', function(req, res, next) {
-
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
     // use ProjectAdd.ejs
-    res.render('about', { title: 'about Tea'});
+    res.render('about', { title: 'about Tea',Ssn});
 });
 
 router.get('/forum', function(req, res, next) {
-
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
     // use ProjectAdd.ejs
-    res.render('forum', { title: 'forum imformation'});
+    res.render('forum', { title: 'forum imformation',Ssn});
 });
 
 router.get('/intro', function(req, res, next) {
-
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
     // use ProjectAdd.ejs
-    res.render('intro', { title: 'intro Tea'});
+    res.render('intro', { title: 'intro Tea',Ssn});
 });
 
 router.get('/store', function(req, res, next) {
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
 	var db = req.con;
     var data = "";
     db.query('SELECT * FROM tea ', function(err, rows) {
@@ -147,7 +158,7 @@ router.get('/store', function(req, res, next) {
         }
 
         var data = rows;
-        res.render('store', { title: 'store imformation', data: data });
+        res.render('store', { title: 'store imformation', data: data,Ssn });
     });
 });
 
@@ -170,23 +181,26 @@ var formidable = require('formidable');
 
 
 router.get('/upload', function (req, res, next) {
-
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
     // use ProjectAdd.ejs
-    res.render('upload', { title: 'upload imformation' });
+    res.render('upload', { title: 'upload imformation',Ssn });
 });
 router.get('/login', function(req, res, next) {
-
-router.get('/form', function (req, res, next) {
-
-    // use ProjectAdd.ejs
-    res.render('form', { title: 'upload imformation' });
-});
-
-
-
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
 
     // use teaAdd.ejs
-    res.render('login', { title: 'login'});
+    res.render('login', { title: 'login',Ssn});
+});
+router.get('/form', function (req, res, next) {
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
+    // use ProjectAdd.ejs
+    res.render('form', { title: 'upload imformation',Ssn });
 });
 router.get('/logintest', function(req, res, next) {
 	
@@ -196,25 +210,44 @@ router.get('/logintest', function(req, res, next) {
 	var Ssn= req.query.Ssn;
 	var Password= req.query.Password;
 	
+	
+	
+	
+	//md5 = crypto.createHash('md5');
 
     var query=db.query('SELECT * FROM user WHERE Ssn=? AND Password=?',[Ssn,Password], function(err, rows) {
         if (err) {
             console.log(err);
         }	
+		//Password = md5.update(Password).digest('hex');
         data = rows;
 		console.log(data);
 		if(data.length == 0){
+			res.locals.error = '使用者不存在';           
 			res.render('login', { title: 'login falid', data: data});
 		}
 		else{
-			res.render('indexlogintest', { title: 'login success', data: data});
+			res.locals.Ssn = Ssn;
+            //設定session
+            req.session.Ssn = res.locals.Ssn; 
+            console.log(req.session.Ssn);   
+			res.render('index', { title: 'login success', data: data,Ssn});
+			return;
+			
 		}
     });
+});
+//loginout
+router.get('/loginout', function(req, res) {
+  req.session.destroy();
+  res.redirect('/');
 });
 // add page
 
 router.get('/addTea', function(req, res, next) {
-
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
     var db = req.con;
     var data = "";
 
@@ -224,7 +257,7 @@ router.get('/addTea', function(req, res, next) {
         }
 
         var data = rows;
-        res.render('addTea', { title: 'Add Tea', data: data });
+        res.render('addTea', { title: 'Add Tea', data: data,Ssn });
     });
 });
 router.post('/addTea', upload.single('logo') ,function(req, res, next) {
