@@ -85,7 +85,9 @@
     
               <h1 class="my-4">Shop Name</h1>
               <div class="list-group">
+			  <% if(locals.Ssn){ %>
 			          <input type='submit' name="Add" value='新增茶葉' onclick="javascript: location.href='addTea'">
+			  <% } %>	
                 <a href="#" class="list-group-item">Category 1</a>
                 <a href="#" class="list-group-item">Category 2</a>
                 <a href="#" class="list-group-item">Category 3</a>
@@ -128,7 +130,6 @@
 				<% for ( var i = 0 ; i < data.length ; i++){ %>
                 <div class="col-lg-4 col-md-6 mb-4">
                   <div class="card h-100">
-					
                     <a href="#"><img class="card-img-top" src="/uploads/<%= data[i].ProtoURL %>" alt=""></a>
                     <div class="card-body">
                       <h4 class="card-title">

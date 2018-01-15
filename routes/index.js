@@ -138,6 +138,26 @@ router.get('/forum', function(req, res, next) {
     res.render('forum', { title: 'forum imformation',Ssn});
 });
 
+router.post('/forum', function(req, res, next) {
+	
+	var db = req.con;	
+    var sql = {
+		RSsn:req.body.RSsn,
+		Text: req.body.Text,
+        Time: 0,
+        Theme: 0       
+    };
+
+    console.log(sql);
+    var qur = db.query('INSERT INTO record SET ?', sql, function(err, rows) {
+        if (err) {
+            console.log(err);
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.redirect('/forum');
+    });
+});
+
 router.get('/intro', function(req, res, next) {
 			var sess = req.session;
 			var Ssn = sess.Ssn;
@@ -194,12 +214,16 @@ router.get('/login', function(req, res, next) {
 
     // use teaAdd.ejs
     res.render('login', { title: 'login',Ssn});
+	
 });
+
 router.get('/form', function (req, res, next) {
 			var sess = req.session;
 			var Ssn = sess.Ssn;
 			var isLogined = !!Ssn;
     // use ProjectAdd.ejs
+	
+	
     res.render('form', { title: 'upload imformation',Ssn });
 });
 router.get('/logintest', function(req, res, next) {
