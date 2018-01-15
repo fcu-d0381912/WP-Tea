@@ -4,11 +4,12 @@ var path = require('path');
 
 var fs = require('fs');
 var multer = require('multer')
-
+var filess;
 var storage = multer.diskStorage({
   destination: './public/uploads/',
   filename: function(req, file, cb){
-    cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+      filess = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
   }
 });
 /*
@@ -152,7 +153,7 @@ router.get('/store', function(req, res, next) {
 
 
 var formidable = require('formidable');
-router.post('/upload', upload.single('logo'),function (req, res) {
+/*router.post('/upload', upload.single('logo'),function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
         if (err) {
@@ -164,7 +165,7 @@ router.post('/upload', upload.single('logo'),function (req, res) {
         console.log(files);
         return res.redirect(303, '/upload');
     });
-});
+});*/
 
 
 
@@ -226,15 +227,30 @@ router.get('/addTea', function(req, res, next) {
         res.render('addTea', { title: 'Add Tea', data: data });
     });
 });
-router.post('/addTea', function(req, res, next) {
-	
+router.post('/addTea', upload.single('logo') ,function(req, res, next) {
+  
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        if (err) {
+            return res.redirect(303, '/error');
+        }
+        console.log('received fields: ');
+        console.log(fields);
+        console.log('received files: ');
+        console.log(files);
+        //return res.redirect(303, '/upload');
+     
+    });
+
 	var db = req.con;	
     var sql = {
 		Tid:req.body.Tid,
         Tname: req.body.Tname,
         price: req.body.price,
-        TeaSpecies: req.body.TeaSpecies
+        TeaSpecies: req.body.TeaSpecies,
+        ProtoURL: filess
     };
+    
 
     console.log(sql);
     var qur = db.query('INSERT INTO tea SET ?', sql, function(err, rows) {
