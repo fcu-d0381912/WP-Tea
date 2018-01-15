@@ -128,6 +128,7 @@ router.get('/upload', function (req, res, next) {
 });
 router.get('/login', function(req, res, next) {
 
+<<<<<<< HEAD
 //<<<<<<< HEAD
 router.get('/form', function (req, res, next) {
 
@@ -158,6 +159,8 @@ router.post('/upload', function (req, res) {
 });
 
 
+=======
+>>>>>>> origin/master
     // use teaAdd.ejs
     res.render('login', { title: 'login'});
 });
@@ -219,5 +222,8 @@ router.post('/addTea', function(req, res, next) {
         res.redirect('/store');
     });
 });
+<<<<<<< HEAD
 //>>>>>>> cfbe3a2cd6f75a8ea783392413d63a0be41c7998
+=======
+>>>>>>> origin/master
 module.exports = router;
