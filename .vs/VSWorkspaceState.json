@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\bin",
+    "\\public",
+    "\\public\\img",
+    "\\public\\img2",
+    "\\public\\stylesheets",
+    "\\public\\stylesheets\\css",
+    "\\public\\stylesheets\\js",
     "\\routes",
     "\\views"
   ],
-  "SelectedNode": "\\views\\upload.ejs",
+  "SelectedNode": "\\views\\index.ejs",
   "PreviewInSolutionExplorer": false
 }

@@ -66,7 +66,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
-             <li class="nav-item active px-lg-4">
+            <li class="nav-item active px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="/"><i class="fa fa-home"></i>首頁
                 <span class="sr-only">(current)</span>
               </a>
@@ -83,18 +83,18 @@
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="/about"><i class="fa fa-users"></i>關於我們</a>
             </li>
-			      <li class="nav-item px-lg-4">
+			<li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="/upload">上傳</a>
             </li>
 			<li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="/login">登入</a>
-            </li>	
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <h1 class="site-heading text-center text-white">討論區</h1>
+    <h1 class="site-heading text-center text-white">茶葉新增</h1>
 
     <section class="page-section about-heading">
       <div class="container">
@@ -103,26 +103,65 @@
           <div class="row">
               
          
-           
+            <div class="col-xl-9 col-lg-10 mx-auto"  >
+              
+            <div class="setComment">
+                <ul>
+                    <li> 紅茶</li>
+                    <li> 綠茶</li>
+                </ul>
+            </div>
 
             <div class="bg-faded rounded p-5" id="commentText">
                 
 
                 <div style="width:400px;height:250px" id = "comment_1">
                     <h2 class="section-heading mb-4">
-					<form  action="/upload" method="post" enctype="multipart/form-data">
-                      <input type="file" name="logo" onchange = "previewFile()">
-					  <img src = "" height="200" alt="Image preview...">
-					  <button type="submit">Submit</button>
-                    </form>
-					</h2>
-					
+                        <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
+                        <span class="section-heading-lower">新增茶葉</span>
+                    </h2>
                     <p></p>
                     <p class="mb-0"></p>
+
+								
+					    <form name="addform" action="addTea" method="post" accept-charset="utf-8" >
+							<div>
+								<label>茶葉id:</label>
+								<%  var i = 0 %>	
+									<% for (  i = 0 ; i < data.length ; i++){ %>													
+										<% data[i].Tid  %>											
+								<% } %>
+								<input type="text" name="Tid" placeholder="Tid" value="<%= data[i-1].Tid+1%>" readonly />
+							</div>
+							<div>
+								<label>茶葉名稱:</label>
+								<input type="text" name="Tname" placeholder="Tname" />
+							</div>
+							<div>
+								<label>價格:</label>
+								<input type="Pnum" name="price" placeholder="price">
+							</div>
+							<div>
+								<label>茶葉種類:</label>
+								<input type="text" name="TeaSpecies" placeholder="TeaSpecies">
+							</div>
+							<div>
+								<input type='submit' value='新增' >
+								<input type='reset' value='重新輸入'>
+								<input type='button' value='返回' onclick="javascript: location.href='/store'">
+							</div>
+						</form>
                 </div>
             </div>   
 			
-          
+            </div>
+              <!--<div class="setComment">
+                  <h1 style="text-align:center">輸入</h1>
+                  <textarea type="text" name="Comment" id="Comment" style="width:190px;height:235px; background-color: hsla(0, 0%, 100%,0.5);"></textarea>
+				  <button id="SendComment">送出</button>
+              </div> -->
+              
+          </div>
         </div>
       </div>
     </section>
@@ -136,24 +175,14 @@
 	
     <!-- Bootstrap core JavaScript -->
     <script src="/stylesheets/vendor/jquery/jquery.min.js"></script>
-	<script src="1.js"></script>
+	<script>
+	function Edit(Tid) {
+        window.location.href = "/addTea?Tid=" + Tid;
+    }
+	</script>
 
     <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script>
-	function previewFile(){
-		var preview = document.querySelector('img');
-		var file = $("input").prop("files")[0];
-		var reader = new FileReader();
 
-		reader.addEventListener("load",function(){
-			preview.src = reader.result;		
-		},false);
-
-		if(file){
-			reader.readAsDataURL(file);
-		}
-	}
-	</script>
   </body>
 
 </html>

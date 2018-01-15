@@ -13,12 +13,12 @@ var fs = require('fs');
 var multer = require('multer')
 var upload = multer({ dest: 'public/img2/' });
 //mysql 先註解掉
-/*
+
 var con = mysql.createConnection({
   host: "localhost",
   user: "d0342435",
   password: "c476306c",
-  database: "scrumboard"
+  database: "wptea"
 });
 
 con.connect(function(err) {
@@ -30,7 +30,7 @@ con.connect(function(err) {
 
 });
 
-*/
+
 var app = express();
 
 // view engine setup
@@ -46,12 +46,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // db state 後面加的
-/*
+
 app.use(function(req, res, next) {
     req.con = con;
     next();
 });
-*/
+
 app.use('/', index);
 app.use('/users', users);
 
@@ -74,7 +74,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.post('/upload', upload.single('logo'), function (req, res, next) {
+app.post('/form', upload.single('logo'), function (req, res, next) {
     var file = req.file;
     
     console.log('文件类型：%s', file.mimetype);
