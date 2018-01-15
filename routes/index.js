@@ -142,8 +142,8 @@ router.post('/forum', function(req, res, next) {
 	
 	var db = req.con;	
     var sql = {
-		RSsn:req.body.RSsn,
-		Text: req.body.Text,
+        RSsn: "sas",
+		Text: "dad",
         Time: 0,
         Theme: 0       
     };
