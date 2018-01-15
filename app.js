@@ -76,13 +76,22 @@ app.use(function(err, req, res, next) {
 
 app.post('/upload', upload.single('logo'), function (req, res, next) {
     var file = req.file;
- 
-    
+    let sampleFile = req.files.sampleFile;
+
     console.log('文件类型：%s', file.mimetype);
     console.log('原始文件名：%s', file.originalname);
     console.log('文件大小：%s', file.size);
     console.log('文件保存路径：%s', file.path);
-    res.send({ ret_code: '0' });
+    var oldpath = files.filetoupload.path;
+    sampleFile.mv('./public/img', function (err) {
+        if (err)
+            return res.status(500).send(err);
+
+        //res.send('File uploaded!');
+        res.send({ ret_code: '0' });
+    });
+  
+    //res.send({ ret_code: '0' });
 });
 
 

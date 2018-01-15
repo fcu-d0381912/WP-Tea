@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 
+var fs = require('fs');
+var multer = require('multer')
+var upload = multer({ dest: 'public/img2/' });
 /*
 //test db
 // home page
@@ -123,7 +126,7 @@ router.get('/store', function(req, res, next) {
 
 
 var formidable = require('formidable');
-router.post('/upload', function (req, res) {
+router.post('/upload', upload.single('logo'),function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
         if (err) {

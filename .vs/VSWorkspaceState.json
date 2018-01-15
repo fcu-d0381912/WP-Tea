@@ -3,11 +3,10 @@
     "",
     "\\bin",
     "\\public",
-    "\\public\\stylesheets\\css",
-    "\\public\\stylesheets\\js",
+    "\\public\\img2",
     "\\routes",
     "\\views"
   ],
-  "SelectedNode": "\\routes\\index.js",
+  "SelectedNode": "\\app.js",
   "PreviewInSolutionExplorer": false
 }
