@@ -121,29 +121,8 @@ router.get('/store', function(req, res, next) {
     res.render('store', { title: 'store imformation'});
 });
 
-router.get('/upload', function (req, res, next) {
-
-    // use ProjectAdd.ejs
-    res.render('upload', { title: 'upload imformation' });
-});
-router.get('/login', function(req, res, next) {
-
-<<<<<<< HEAD
-//<<<<<<< HEAD
-router.get('/form', function (req, res, next) {
-
-    // use ProjectAdd.ejs
-    res.render('form', { title: 'upload imformation' });
-});
-
-router.get('/form', function (req, res) {
-    // do something w/ req.body or req.files
-    
-});
-
 
 var formidable = require('formidable');
-
 router.post('/upload', function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
@@ -154,13 +133,28 @@ router.post('/upload', function (req, res) {
         console.log(fields);
         console.log('received files: ');
         console.log(files);
-        return res.redirect(303, '/form');
+        return res.redirect(303, '/upload');
     });
 });
 
 
-=======
->>>>>>> origin/master
+
+router.get('/upload', function (req, res, next) {
+
+    // use ProjectAdd.ejs
+    res.render('upload', { title: 'upload imformation' });
+});
+router.get('/login', function(req, res, next) {
+
+router.get('/form', function (req, res, next) {
+
+    // use ProjectAdd.ejs
+    res.render('form', { title: 'upload imformation' });
+});
+
+
+
+
     // use teaAdd.ejs
     res.render('login', { title: 'login'});
 });
@@ -222,8 +216,5 @@ router.post('/addTea', function(req, res, next) {
         res.redirect('/store');
     });
 });
-<<<<<<< HEAD
-//>>>>>>> cfbe3a2cd6f75a8ea783392413d63a0be41c7998
-=======
->>>>>>> origin/master
+
 module.exports = router;

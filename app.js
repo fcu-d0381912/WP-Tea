@@ -74,8 +74,9 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.post('/form', upload.single('logo'), function (req, res, next) {
+app.post('/upload', upload.single('logo'), function (req, res, next) {
     var file = req.file;
+ 
     
     console.log('文件类型：%s', file.mimetype);
     console.log('原始文件名：%s', file.originalname);
@@ -84,10 +85,6 @@ app.post('/form', upload.single('logo'), function (req, res, next) {
     res.send({ ret_code: '0' });
 });
 
-app.get('/form', function (req, res, next) {
-    var form = fs.readFileSync('./form.html', { encoding: 'utf8' });
-    res.send(form);
-});
 
 
 module.exports = app;

@@ -147,9 +147,11 @@
 
 		reader.addEventListener("load",function(){
 			preview.src = reader.result;		
+			
 		},false);
 
 		if(file){
+		
 			reader.readAsDataURL(file);
 		}
 	}
