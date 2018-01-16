@@ -5,6 +5,7 @@ var path = require('path');
 var fs = require('fs');
 var multer = require('multer')
 var filess;
+var dateData;
 var storage = multer.diskStorage({
   destination: './public/uploads/',
   filename: function(req, file, cb){
@@ -20,8 +21,10 @@ var storage = multer.diskStorage({
 			  var date=NowDate.getDate();
 			　var h=NowDate.getHours();
 			　var m=NowDate.getMinutes();
-			　var s=NowDate.getSeconds();　
-			　document.getElementById('showtime').innerHTML = y+'年'+(month+1)+'月'+date+'日'+h+'時'+m+'分'+s+'秒';
+			　var s=NowDate.getSeconds();
+			  dateData=y+'年'+(month+1)+'月'+date+'日'+h+'時'+m+'分'+s+'秒';
+			  console.log(dateData);
+			　//document.getElementById('showtime').innerHTML = y+'年'+(month+1)+'月'+date+'日'+h+'時'+m+'分'+s+'秒';
 	}
 /*
 var upload = multer({
@@ -158,6 +161,7 @@ router.get('/forum', function(req, res, next) {
 });
 
 router.post('/addcomment', function(req, res, next) {
+	setTime();
 	var Password= req.query.Password;
 			var sess = req.session;
 			var Ssn = sess.Ssn;
@@ -166,7 +170,7 @@ router.post('/addcomment', function(req, res, next) {
     var sql = {
         RSsn: req.session.Ssn,
 		Text: req.body['Commentmysql'],
-        Time: 0,
+        Time: dateData,
         Theme: 0       
     };
 
