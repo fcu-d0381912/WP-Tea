@@ -134,16 +134,27 @@ router.get('/forum', function(req, res, next) {
 			var sess = req.session;
 			var Ssn = sess.Ssn;
 			var isLogined = !!Ssn;
-    // use ProjectAdd.ejs
-    res.render('forum', { title: 'forum imformation',Ssn});
+	var db = req.con;
+    var data = "";
+    db.query('SELECT * FROM record ', function(err, rows) {
+        if (err) {
+            console.log(err);
+        }
+
+        var data = rows;
+        res.render('forum', { title: 'forum imformation', data: data,Ssn });
+    });
 });
 
-router.post('/forum', function(req, res, next) {
-	
+router.post('/addcomment', function(req, res, next) {
+	var Password= req.query.Password;
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
 	var db = req.con;	
     var sql = {
-        RSsn: "sas",
-		Text: "dad",
+        RSsn: req.session.Ssn,
+		Text: req.body['Commentmysql'],
         Time: 0,
         Theme: 0       
     };

@@ -126,9 +126,9 @@
           </span>
         </div>
         
-        <form class="form-area" action="/forum" method="post">  
+        <form class="form-area" action="addcomment" method="post">  
           <div class="form-group">
-            <textarea type="text" name="Comment" id="message" class="form-control" placeholder="輸入文字" rows="10"></textarea>
+            <textarea type="text" name="Commentmysql" id="message" class="form-control" placeholder="輸入文字" rows="10"></textarea>
           </div>
         
         <div class="row">
@@ -176,7 +176,12 @@
                     <h2 class="section-heading mb-4">
                         <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
                         <span class="section-heading-lower">關於茶葉</span>
+						
                     </h2>
+							<% for ( var i = 0 ; i < data.length ; i++){ %>
+								<h3><%= data[i].RSsn %>:<%= data[i].Text %></h3>
+								
+							<% } %>
                     <p></p>
                     <p class="mb-0"></p>
                 </div>
@@ -216,8 +221,19 @@
 	
     <!-- Bootstrap core JavaScript -->
     <script src="/stylesheets/vendor/jquery/jquery.min.js"></script>
-	<script src="/stylesheets/js/sendMessage.js"></script>
-	
+	<!-- <script src="/stylesheets/js/sendMessage.js"></script>-->
+	<script>		
+	function setTime() {
+		　　  var NowDate=new Date();
+			  var y=NowDate.getFullYear();
+		      var month=NowDate.getMonth();
+			  var date=NowDate.getDate();
+			　var h=NowDate.getHours();
+			　var m=NowDate.getMinutes();
+			　var s=NowDate.getSeconds();　
+			　document.getElementById('showtime').innerHTML = y+'年'+(month+1)+'月'+date+'日'+h+'時'+m+'分'+s+'秒';
+	}
+	</script>
     <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/stylesheets/js/tea-website.js"></script>
 
