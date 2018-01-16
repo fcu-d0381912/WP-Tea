@@ -83,9 +83,7 @@
             <li class="nav-item px-lg-4">
               <a class="nav-link" href="/about">關於我們</a>
             </li>
-			      <li class="nav-item px-lg-4">
-              <a class="nav-link" href="/upload">上傳</a>
-            </li>
+			      
 						<% if (locals.Ssn) { %>
 						  <p>您好, <%= Ssn %></p>  
 						  <!--<a href="/logout">登出</a>-->
@@ -113,16 +111,11 @@
                 </ul>
             </div>
 			-->
-            <div class="bg-faded rounded p-5" id="commentText">
+            <div class="bg-faded addtea-area" style="float:center;">
                 
 
-                <div style="width:400px;height:250px" id = "comment_1">
-                    <h2 class="section-heading mb-4">
-                        <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
-                        <span class="section-heading-lower">登入</span>
-                    </h2>
-                    <p></p>
-                    <p class="mb-0"></p>
+                <div>
+                    
 					    <form name="loginform" action="logintest" method="get" accept-charset="utf-8" >
 							
 							<div>
@@ -135,8 +128,8 @@
 							</div>
 
 							<div>
-								<input type='submit' value='登入'>
-								<input type='reset' value='重新輸入'>
+								<input class="edit-button" type='submit' value='登入'>
+								<input class="edit-button" type='reset' value='重新輸入'>
 								<!--<input type='button' value='註冊' onclick="javascript: location.href='/rigister'">-->
 							</div>
 						</form>

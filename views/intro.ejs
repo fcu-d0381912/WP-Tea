@@ -52,24 +52,26 @@
             <li class="nav-item px-lg-4">
               <a class="nav-link" href="/about">關於我們</a>
             </li>
-			      <li class="nav-item px-lg-4">
-              <a class="nav-link" href="/upload">上傳</a>
-            </li>
-						<% if (locals.Ssn) { %>
+			      
+					<!--	<% if (locals.Ssn) { %>
 						  <p>您好, <%= Ssn %></p>  
-						  <!--<a href="/logout">登出</a>-->
-						<% } %>				      
+						  <a href="/logout">登出</a>
+						<% } %>				      -->
           </ul>
         </div>
       </div>
     </nav>
-	<% if (locals.Ssn) { %>
-	<button class="text-white login-button nav-link " onclick="javascript: location.href='loginout'">登出</button>
-	<% } %>	
-	<% if(!locals.Ssn){ %>	
-	    <button class="text-white login-button nav-link ">註冊</button>
-		<button class="text-white login-button nav-link " onclick="javascript: location.href='login'">登入</button>
-	<% } %>
+
+	  <section class="clearfix">
+      <% if (locals.Ssn) { %>
+      <button class="text-white login-button nav-link " onclick="javascript: location.href='logout'">登出</button>
+      <p class="text-white user-logintext">您好, <%= Ssn %></p>
+      <% } %>	
+      <% if(!locals.Ssn){ %>	
+      <button class="text-white login-button nav-link ">註冊</button>
+      <button class="text-white login-button nav-link " onclick="javascript: location.href='login'">登入</button>
+      <% } %>
+    </section>
 
     <button onclick="topFunction()" id="backToTopButton" title="回頂部"><i class="fa fa-chevron-up" style="font-size:30px;"></i></button>
 

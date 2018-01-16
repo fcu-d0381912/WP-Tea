@@ -262,7 +262,7 @@ router.get('/logintest', function(req, res, next) {
     });
 });
 //loginout
-router.get('/loginout', function(req, res) {
+router.get('/logout', function(req, res) {
   req.session.destroy();
   res.redirect('/');
 });
