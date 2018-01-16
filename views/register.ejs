@@ -60,7 +60,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-3" id="mainNav">
       <div class="container">
-        <a class="navbar-brand  font-weight-bold d-lg-none" href="/">茶之口未</a>
+        <a class="navbar-brand font-weight-bold d-lg-none" href="/">茶之口味</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -84,27 +84,16 @@
               <a class="nav-link" href="/about">關於我們</a>
             </li>
 			      
-						<!--<% if (locals.Ssn) { %>
+						<% if (locals.Ssn) { %>
 						  <p>您好, <%= Ssn %></p>  
-						  <a href="/logout">登出</a>
-						<% } %>				      -->
+						  <!--<a href="/logout">登出</a>-->
+						<% } %>				      
           </ul>
         </div>
       </div>
     </nav>
 
-    <section class="clearfix">
-      <% if (locals.Ssn) { %>
-      <button class="text-white login-button nav-link " onclick="javascript: location.href='logout'">登出</button>
-      <p class="text-white user-logintext">您好, <%= Ssn %></p>
-      <% } %>	
-      <% if(!locals.Ssn){ %>	
-      <button class="text-white login-button nav-link " onclick="javascript: location.href='register'">註冊</button>
-      <button class="text-white login-button nav-link " onclick="javascript: location.href='login'">登入</button>
-      <% } %>
-    </section>
-
-    <h1 class="site-heading text-center text-white">茶葉新增</h1>
+    <h1 class="site-heading text-center text-white">註冊</h1>
 
     <section class="page-section about-heading">
       <div class="container">
@@ -113,63 +102,47 @@
           <div class="row">
               
          
-            <div class="col-xl-12 col-lg-9 mx-auto"  >
-              
-              <div class="bg-faded addtea-area">
-                
-                <div >
-                    								
-                  <form name="addform" action="addTea" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                    <div>
-                      <label>選擇圖片:</label>
-                    <input type="file" name="logo" onchange = "previewFile()">
-                    </div>
-                    
-                    <div>
-                      <label>茶葉id:</label>
-                      <%  var i = 0 %>	
-                        <% for (  i = 0 ; i < data.length ; i++){ %>													
-                          <% data[i].Tid  %>											
-                      <% } %>
-                      <input type="text" name="Tid" placeholder="Tid" value="<%= data[i-1].Tid+1%>" readonly />
-                    </div>
-                    <div>
-                      <label>茶葉名稱:</label>
-                      <input type="text" name="Tname" placeholder="Tname">
-                    </div>
-                    <div>
-                      <label>價格:</label>
-                      <input type="Pnum" name="price" placeholder="price">
-                    </div>
-                    <div>
-                      <label>茶葉種類:</label>
-                      <input type="text" name="TeaSpecies" placeholder="TeaSpecies">
-                    </div>
-                    <div>
-                      <input class="edit-button" type='submit' value='新增' >
-                      <input class="edit-button" type='reset' value='重新輸入'>
-                      <input class="edit-button" type='button' value='返回' onclick="javascript: location.href='/store'">
-                    </div>
-                    
-                
-                  </form> 
-					
-                </div>
-              </div>   
-              
-              <div class="bg-faded addtea-area">
-
-                <div >
-                    <h2 class="section-heading mb-4">
-                      <img src = "" height="200" alt="預覽圖">  
-                    </h2>
-                </div>
-              </div>  
-              
-
+            <div class="col-xl-9 col-lg-10 mx-auto"  >
+            <!--   
+            <div class="setComment">
+                <ul>
+                    <li> 紅茶</li>
+                    <li> 綠茶</li>
+                </ul>
             </div>
-            
-              
+			-->
+            <div class="bg-faded addtea-area" style="float:center;">
+                
+
+                <div>
+                    
+					    <form name="registerform" action="register" method="post" accept-charset="utf-8" >
+							
+							<div>
+								<label>帳號:</label>
+								<input type="text" name="Ssn" placeholder="Ssn" />
+							</div>
+							<div>
+								<label>密碼:</label>
+								<input type="text" name="Password" placeholder="Password">
+							</div>
+
+							<div>
+								<input class="edit-button" type='submit' value='註冊'>
+								<input class="edit-button" type='reset' value='重新輸入'>
+								<!--<input type='button' value='註冊' onclick="javascript: location.href='/rigister'">-->
+							</div>
+						</form>
+                </div>
+            </div>   
+			
+            </div>
+             <!-- <div class="setComment">
+                  <h1 style="text-align:center">輸入</h1>
+                  <textarea type="text" name="Comment" id="Comment" style="width:190px;height:235px; background-color: hsla(0, 0%, 100%,0.5);"></textarea>
+				  <button id="SendComment">送出</button>
+              </div>
+              -->
           </div>
         </div>
       </div>
@@ -184,29 +157,7 @@
 	
     <!-- Bootstrap core JavaScript -->
     <script src="/stylesheets/vendor/jquery/jquery.min.js"></script>
-	<script>
-	function Edit(Tid) {
-        window.location.href = "/addTea?Tid=" + Tid;
-    }
-	</script>
-
-	<script>
-	function previewFile(){
-		var preview = document.querySelector('img');
-		var file = $("input").prop("files")[0];
-		var reader = new FileReader();
-
-		reader.addEventListener("load",function(){
-			preview.src = reader.result;		
-			
-		},false);
-
-		if(file){
-		
-			reader.readAsDataURL(file);
-		}
-	}
-	</script>
+	
 
     <script src="/stylesheets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
