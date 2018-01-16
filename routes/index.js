@@ -12,6 +12,17 @@ var storage = multer.diskStorage({
       filess = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
   }
 });
+
+	function setTime() {
+		　　  var NowDate=new Date();
+			  var y=NowDate.getFullYear();
+		      var month=NowDate.getMonth();
+			  var date=NowDate.getDate();
+			　var h=NowDate.getHours();
+			　var m=NowDate.getMinutes();
+			　var s=NowDate.getSeconds();　
+			　document.getElementById('showtime').innerHTML = y+'年'+(month+1)+'月'+date+'日'+h+'時'+m+'分'+s+'秒';
+	}
 /*
 var upload = multer({
   storage: storage
@@ -270,6 +281,35 @@ router.get('/logintest', function(req, res, next) {
 			return;
 			
 		}
+    });
+});
+
+router.get('/register', function(req, res, next) {
+			var sess = req.session;
+			var Ssn = sess.Ssn;
+			var isLogined = !!Ssn;
+
+    // use teaAdd.ejs
+    res.render('register', { title: 'register',Ssn});
+	
+});
+
+router.post('/register', function(req, res, next) {
+
+	var db = req.con;	
+    var sql = {
+        Ssn: req.body.Ssn,
+		Password: req.body.Password,
+        state: 0,            
+    };
+
+    console.log(sql);
+    var qur = db.query('INSERT INTO user SET ?', sql, function(err, rows) {
+        if (err) {
+            console.log(err);
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.redirect('/');
     });
 });
 //loginout
