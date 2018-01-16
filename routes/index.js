@@ -253,13 +253,14 @@ router.get('/form', function (req, res, next) {
 	
     res.render('form', { title: 'upload imformation',Ssn });
 });
-router.get('/logintest', function(req, res, next) {
+router.post('/logintest', function(req, res, next) {
 	
 	var db = req.con;	
     var data = null;
-    var state= req.query.state;
-	var Ssn= req.query.Ssn;
-	var Password= req.query.Password;
+    var state = req.query.state;
+   
+    var Ssn = req.body.Ssn;
+    var Password = req.body.Password;
 	
 	
 	
@@ -274,15 +275,17 @@ router.get('/logintest', function(req, res, next) {
         data = rows;
 		console.log(data);
 		if(data.length == 0){
-			res.locals.error = '使用者不存在';           
-			res.render('login', { title: 'login falid', data: data});
+            res.locals.error = '使用者不存在';    
+            res.redirect('/login');
+			//res.render('login', { title: 'login falid', data: data});
 		}
 		else{
 			res.locals.Ssn = Ssn;
             //設定session
             req.session.Ssn = res.locals.Ssn; 
-            console.log(req.session.Ssn);   
-			res.render('index', { title: 'login success', data: data,Ssn});
+            console.log(req.session.Ssn);
+            res.redirect('/');
+			//res.render('index', { title: 'login success', data: data,Ssn});
 			return;
 			
 		}
