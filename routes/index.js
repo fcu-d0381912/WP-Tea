@@ -361,6 +361,7 @@ router.post('/addTea', upload.single('logo') ,function(req, res, next) {
         Tname: req.body.Tname,
         price: req.body.price,
         TeaSpecies: req.body.TeaSpecies,
+        Telephone: req.body.Telephone,
         ProtoURL: filess
     };
     
